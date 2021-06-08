@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import './category_meal_screen.dart';
+import '../screens/category_meal_screen.dart';
 
 class CategoryItem extends StatelessWidget {
   final String id;
@@ -11,14 +11,16 @@ class CategoryItem extends StatelessWidget {
 
   void onPressCategory(ctx) {
     Navigator.of(ctx).pushNamed(
-      'categories-meal',
+      CategoryMealScreen.routeName,
       arguments: {'id': id, 'title': title},
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
+      radius: 15,
+      borderRadius: BorderRadius.circular(15),
       onTap: () => onPressCategory(context),
       child: Container(
         padding: EdgeInsets.all(15),
