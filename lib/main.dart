@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
           primarySwatch: Colors.pink,
           accentColor: Colors.amber,
-          canvasColor: Color.fromRGBO(80, 95, 80, 1),
+          canvasColor: Color.fromRGBO(50, 50, 50, 1),
           fontFamily: 'Raleway',
           textTheme: ThemeData.light().textTheme.copyWith(
                 bodyText1: TextStyle(
@@ -25,10 +25,10 @@ class MyApp extends StatelessWidget {
                   color: Color.fromRGBO(20, 51, 51, 1),
                 ),
                 headline6: TextStyle(
-                  fontSize: 24,
-                  fontFamily: 'RobotoCondensed',
-                  fontWeight: FontWeight.bold,
-                ),
+                    fontSize: 24,
+                    fontFamily: 'RobotoCondensed',
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black),
               )),
       home: CategoriesScreen(),
       routes: {
