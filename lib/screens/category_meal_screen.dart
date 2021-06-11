@@ -3,7 +3,7 @@ import '../widgets/meal_item.dart';
 import '../../dummy_data.dart';
 
 class CategoryMealScreen extends StatelessWidget {
-  static const routeName = 'cateogry-meal';
+  static const routeName = '/cateogry-meal';
   // final String id;
   // final String title;
   // CategoryMealScreen(this.id, this.title);
@@ -20,7 +20,27 @@ class CategoryMealScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(categoryTitle),
+        leading: IconButton(
+          iconSize: 30,
+          icon: Icon(Icons.arrow_back_rounded, color: Colors.black),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.bottomLeft,
+                end: Alignment.topRight,
+                colors: [
+                  Colors.lightBlue,
+                  Color(0xFF5500FF),
+                ]),
+          ),
+        ),
+        title: Text(categoryTitle,
+            style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+                fontSize: 22)),
       ),
       body: ListView.builder(
         itemBuilder: (ctx, index) {

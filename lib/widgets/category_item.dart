@@ -24,9 +24,11 @@ class CategoryItem extends StatelessWidget {
       onTap: () => onPressCategory(context),
       child: Container(
         padding: EdgeInsets.all(15),
-        child: Text(
-          title,
-          style: Theme.of(context).textTheme.headline6,
+        child: Center(
+          child: Text(
+            title,
+            style: Theme.of(context).textTheme.headline6,
+          ),
         ),
         decoration: BoxDecoration(
           gradient: LinearGradient(

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import './screens/category_meal_screen.dart';
-import './screens/categories_screen.dart';
 import './screens/meal_detail_screen.dart';
+import 'screens/tabs_screen.dart';
+import './screens/filters_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Food Recipes',
       theme: ThemeData(
-          primarySwatch: Colors.pink,
+          // primarySwatch: Colors.pink,
           accentColor: Colors.amber,
           canvasColor: Color.fromRGBO(50, 50, 50, 1),
           fontFamily: 'Raleway',
@@ -30,10 +30,13 @@ class MyApp extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                     color: Colors.black),
               )),
-      home: CategoriesScreen(),
+      home: TabsScreen(),
+      // initialRoute: '/',
       routes: {
+        // '/': (ctx) => TabsScreen(),
         CategoryMealScreen.routeName: (ctx) => CategoryMealScreen(),
         MealDetailScreen.routeName: (ctx) => MealDetailScreen(),
+        FiltersScreen.routeName: (ctx) => FiltersScreen(),
       },
     );
   }
