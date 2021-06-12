@@ -32,6 +32,8 @@ class _TabsScreenState extends State<TabsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.black),
+        backgroundColor: Colors.transparent,
         title: Text(
           _pages[_selectedPageIndex]['title'],
           style: TextStyle(
@@ -43,6 +45,7 @@ class _TabsScreenState extends State<TabsScreen> {
         ),
         flexibleSpace: Container(
           decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
             gradient: LinearGradient(
                 begin: Alignment.bottomLeft,
                 end: Alignment.topRight,
