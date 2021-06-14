@@ -5,7 +5,9 @@ import '../dummy_data.dart';
 
 class MealDetailScreen extends StatelessWidget {
   static const routeName = '/meal-detail';
-
+  final Function toggleFavorites;
+  final Function isFavoriteMeal;
+  MealDetailScreen(this.toggleFavorites, this.isFavoriteMeal);
   @override
   Widget build(BuildContext context) {
     final mealID = ModalRoute.of(context).settings.arguments as String;
@@ -185,16 +187,16 @@ class MealDetailScreen extends StatelessWidget {
                 ),
               ),
             ),
+            SizedBox(
+              height: 15,
+            ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        tooltip: 'Press to temporarily hide this recipe from the category',
-        child: Icon(Icons.delete_rounded),
-        onPressed: () {
-          Navigator.of(context).pop(mealID);
-        },
-      ),
+          tooltip: 'Favorite the recipe',
+          child: Icon(isFavoriteMeal(mealID) ? Icons.star : Icons.star_border),
+          onPressed: () => toggleFavorites(mealID)),
     );
   }
 }

@@ -43,7 +43,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
   bool _vegetarian = false;
   bool _vegan = false;
   bool _lactoseFree = false;
-  
+
   @override
   void initState() {
     _glutenFree = widget.currentFilters['gluten'];
@@ -58,6 +58,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.black),
         backgroundColor: Colors.transparent,
         title: Text(
           'Filters',
@@ -87,7 +88,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
                 widget.saveFilters(selectedFilters);
                 Navigator.of(context).pushReplacementNamed('/');
               },
-              icon: Icon(Icons.check))
+              icon: Icon(Icons.check, color: Colors.white))
         ],
       ),
       drawer: MainDrawer(),
