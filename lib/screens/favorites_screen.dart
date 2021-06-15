@@ -37,33 +37,23 @@ class FavoritesScreen extends StatelessWidget {
               },
               itemCount: favoriteMeals.length,
             )
-          : Container(
-              margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-                color: Colors.black.withAlpha(170),
+          : GridView.builder(
+              itemCount: favoriteMeals.length,
+              gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                maxCrossAxisExtent: 400,
+                mainAxisExtent: 345,
+                // childAspectRatio: 8 / 3,
               ),
-              padding: EdgeInsets.symmetric(vertical: 15, horizontal: 10),
-              height: 400,
-              width: double.infinity,
-              child: GridView.builder(
-                  itemCount: favoriteMeals.length,
-                  gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                    maxCrossAxisExtent: 400,
-                    mainAxisExtent: 350,
-                    childAspectRatio: 8 / 3,
-                  ),
-                  itemBuilder: (ctx, index) {
-                    return MealItem(
-                      id: favoriteMeals[index].id,
-                      title: favoriteMeals[index].title,
-                      imageURL: favoriteMeals[index].imageURL,
-                      duration: favoriteMeals[index].duration,
-                      complexity: favoriteMeals[index].complexity,
-                      affordability: favoriteMeals[index].affordability,
-                    );
-                  }),
-            );
+              itemBuilder: (ctx, index) {
+                return MealItem(
+                  id: favoriteMeals[index].id,
+                  title: favoriteMeals[index].title,
+                  imageURL: favoriteMeals[index].imageURL,
+                  duration: favoriteMeals[index].duration,
+                  complexity: favoriteMeals[index].complexity,
+                  affordability: favoriteMeals[index].affordability,
+                );
+              });
     }
   }
 }

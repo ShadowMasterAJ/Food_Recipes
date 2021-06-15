@@ -13,7 +13,11 @@ class FiltersScreen extends StatefulWidget {
 
 class _FiltersScreenState extends State<FiltersScreen> {
   Widget _buildSwitchListTile(
-      String title, String description, bool currentVal, Function updateValue) {
+    String title,
+    String description,
+    bool currentVal,
+    Function updateValue,
+  ) {
     return SwitchListTile(
       activeColor: Colors.lightBlue,
       inactiveThumbColor: Colors.blue[200],
@@ -73,6 +77,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
                 colors: [
                   Color(0xFF00FFAE),
                   Color(0xFF001EFF),
+                  Color(0xFFAA00FF),
                 ]),
           ),
         ),
@@ -95,7 +100,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
       body: Column(
         children: [
           Container(
-            padding: EdgeInsets.all(20),
+            padding: EdgeInsets.symmetric(vertical: 5),
             child: Text(
               'Adjust Filters',
               style: TextStyle(
@@ -109,55 +114,34 @@ class _FiltersScreenState extends State<FiltersScreen> {
           Expanded(
             child: ListView(children: [
               _buildSwitchListTile(
-                'Gluten-Free',
-                'To filter gluten-free food',
-                _glutenFree,
-                (newValue) {
-                  setState(
-                    () {
-                      _glutenFree = newValue;
-                    },
-                  );
-                },
-              ),
+                  'Gluten-Free', 'To filter gluten-free food', _glutenFree,
+                  (newValue) {
+                setState(() {
+                  _glutenFree = newValue;
+                });
+              }),
               _buildSwitchListTile(
-                'Vegetarian',
-                'To filter vegetarian food',
-                _vegetarian,
-                (newValue) {
-                  setState(
-                    () {
-                      _vegetarian = newValue;
-                    },
-                  );
-                },
-              ),
+                  'Vegetarian', 'To filter vegetarian food', _vegetarian,
+                  (newValue) {
+                setState(() {
+                  _vegetarian = newValue;
+                });
+              }),
+              _buildSwitchListTile('Vegan', 'To filter vegan food', _vegan,
+                  (newValue) {
+                setState(() {
+                  _vegan = newValue;
+                });
+              }),
               _buildSwitchListTile(
-                'Vegan',
-                'To filter vegan food',
-                _vegan,
-                (newValue) {
-                  setState(
-                    () {
-                      _vegan = newValue;
-                    },
-                  );
-                },
-              ),
-              _buildSwitchListTile(
-                'Lactose-Free',
-                'To filter lactose-free food',
-                _lactoseFree,
-                (newValue) {
-                  setState(
-                    () {
-                      _lactoseFree = newValue;
-                    },
-                  );
-                },
-              ),
+                  'Lactose-Free', 'To filter lactose-free food', _lactoseFree,
+                  (newValue) {
+                setState(() {
+                  _lactoseFree = newValue;
+                });
+              })
             ]),
-          )
+          ),
         ],
       ),
     );
