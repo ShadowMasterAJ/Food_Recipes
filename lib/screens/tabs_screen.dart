@@ -41,7 +41,6 @@ class _TabsScreenState extends State<TabsScreen> {
     super.initState();
   }
 
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -88,9 +87,11 @@ class _TabsScreenState extends State<TabsScreen> {
             begin: Alignment.bottomLeft,
             end: Alignment.topRight,
             colors: [
-              Color(0xFF75FFFD),
-              Color(0xFFAA7CFF),
-              Color(0xFFEC74FF),
+              Color(0xFFCF3DFF),
+              Color(0xFF3DFFFF),
+              Color(0xFF00A6FF),
+              Color(0xFF3DFFFF),
+              Color(0xFFCF3DFF),
             ],
           ),
           borderRadius: BorderRadius.circular(20),
@@ -100,7 +101,7 @@ class _TabsScreenState extends State<TabsScreen> {
           onTap: _selectPage,
           backgroundColor: Colors.transparent,
 
-          unselectedItemColor: Colors.white,
+          unselectedItemColor: Colors.black54,
           selectedItemColor: Colors.black,
           unselectedLabelStyle: TextStyle(fontSize: 16, fontFamily: 'Raleway'),
           // unselectedFontSize: 16,

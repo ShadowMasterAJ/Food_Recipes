@@ -33,53 +33,66 @@ class _CategoryMealScreenState extends State<CategoryMealScreen> {
     super.didChangeDependencies();
   }
 
-  void _removeMeal(String mealID) {
-    setState(() {
-      displayedMeal.removeWhere((meal) => meal.id == mealID);
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.of(context);
+    final isLandscape = mediaQuery.orientation == Orientation.landscape;
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        leading: IconButton(
-          iconSize: 30,
-          icon: Icon(Icons.arrow_back_rounded, color: Colors.black),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
-        flexibleSpace: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-            gradient: LinearGradient(
-                begin: Alignment.bottomLeft,
-                end: Alignment.topRight,
-                colors: [
-                  Colors.lightBlue,
-                  Color(0xFF5500FF),
-                ]),
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          leading: IconButton(
+            iconSize: 30,
+            icon: Icon(Icons.arrow_back_rounded, color: Colors.black),
+            onPressed: () => Navigator.of(context).pop(),
           ),
+          flexibleSpace: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              gradient: LinearGradient(
+                  begin: Alignment.bottomLeft,
+                  end: Alignment.topRight,
+                  colors: [
+                    Colors.lightBlue,
+                    Color(0xFF5500FF),
+                  ]),
+            ),
+          ),
+          title: Text(categoryTitle,
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                  fontSize: 22)),
         ),
-        title: Text(categoryTitle,
-            style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: Colors.black,
-                fontSize: 22)),
-      ),
-      body: ListView.builder(
-        itemBuilder: (ctx, index) {
-          return MealItem(
-            id: displayedMeal[index].id,
-            title: displayedMeal[index].title,
-            imageURL: displayedMeal[index].imageURL,
-            duration: displayedMeal[index].duration,
-            complexity: displayedMeal[index].complexity,
-            affordability: displayedMeal[index].affordability,
-          );
-        },
-        itemCount: displayedMeal.length,
-      ),
-    );
+        body: !isLandscape
+            ? ListView.builder(
+                itemBuilder: (ctx, index) {
+                  return MealItem(
+                    id: displayedMeal[index].id,
+                    title: displayedMeal[index].title,
+                    imageURL: displayedMeal[index].imageURL,
+                    duration: displayedMeal[index].duration,
+                    complexity: displayedMeal[index].complexity,
+                    affordability: displayedMeal[index].affordability,
+                  );
+                },
+                itemCount: displayedMeal.length,
+              )
+            : GridView.builder(
+                gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                  maxCrossAxisExtent: 400,
+                  mainAxisExtent: 350,
+                ),
+                itemBuilder: (ctx, index) {
+                  return MealItem(
+                    id: displayedMeal[index].id,
+                    title: displayedMeal[index].title,
+                    imageURL: displayedMeal[index].imageURL,
+                    duration: displayedMeal[index].duration,
+                    complexity: displayedMeal[index].complexity,
+                    affordability: displayedMeal[index].affordability,
+                  );
+                },
+                itemCount: displayedMeal.length,
+              ));
   }
 }
